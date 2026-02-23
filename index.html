@@ -37,9 +37,9 @@
                 <p><span id="total-jobs">8</span> jobs</p>
             </div>
             <div class="">
-                <button  class="bg-base-100 bg-blue-500 text-base-100 py-2 px-8 rounded-sm cursor-pointer">All</button>
-                <button  class="bg-base-100 px-4 py-2 rounded-sm cursor-pointer">Interview</button>
-                <button  class="bg-base-100 px-4 py-2 rounded-sm cursor-pointer">Rejected</button>
+                <button id="all-filter-btn" onclick="toggleButton('all-filter-btn')" class="bg-base-100 bg-blue-500 text-base-100 py-2 px-8 rounded-sm cursor-pointer">All</button>
+                <button id="interview-filter-btn" onclick="toggleButton('interview-filter-btn')" class="bg-base-100 px-4 py-2 rounded-sm cursor-pointer">Interview</button>
+                <button id="rejected-filter-btn" onclick="toggleButton('rejected-filter-btn')" class="bg-base-100 px-4 py-2 rounded-sm cursor-pointer">Rejected</button>
             </div>
         </section>
         <section id="job-cards" class="space-y-4 pb-15">
