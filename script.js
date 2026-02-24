@@ -2,7 +2,6 @@ let interviewList = [];
 let rejectedList = [];
 let currentStatus = ""
 
-
 let total = document.getElementById("total");
 let interview = document.getElementById("interview");
 let rejected = document.getElementById("rejected");
@@ -56,35 +55,58 @@ function toggleButton(id){
    selected.classList.add('text-base-100','bg-blue-500');
 
    currentStatus = id;
-   console.log(currentStatus)
+   console.log(currentStatus);
 
-
-//   if(interviewList.length < '1')
-// {
-//     noJob.classList.remove('hidden');
-//     totalJobCard.classList.add("hidden");
-
-// }
- 
-
-
-   if(id == "all-filter-btn" ){
-    totalJobCard.classList.remove("hidden");
-    interviewField.classList.add("hidden")
+   if(id == "all-filter-btn"){
+       noJob.classList.add("hidden");
+       totalJobCard.classList.remove("hidden");
+       interviewField.classList.add("hidden");
    }
    else if(id == "interview-filter-btn"){
-    interviewField.classList.remove("hidden");
-    totalJobCard.classList.add("hidden")
-    createInterview()
+       if(interviewList.length == 0){
+           noJob.classList.remove('hidden');
+           totalJobCard.classList.add("hidden");
+           interviewField.classList.add("hidden");
+       } else {
+           noJob.classList.add("hidden");
+           totalJobCard.classList.add("hidden");
+           interviewField.classList.remove("hidden");
+           createInterview();
+       }
    }
    else if(id == "rejected-filter-btn"){
-    interviewField.classList.remove("hidden");
-    totalJobCard.classList.add("hidden")
-    createRejected();
+       if(rejectedList.length == 0){
+           noJob.classList.remove('hidden');
+           totalJobCard.classList.add("hidden");
+           interviewField.classList.add("hidden");
+       } else {
+           noJob.classList.add("hidden");
+           totalJobCard.classList.add("hidden");
+           interviewField.classList.remove("hidden");
+           createRejected();
+       }
    }
-
-
 }
+
+
+
+//    if(id == "all-filter-btn" ){
+//     totalJobCard.classList.remove("hidden");
+//     interviewField.classList.add("hidden")
+//    }
+//    else if(id == "interview-filter-btn"){
+//     interviewField.classList.remove("hidden");
+//     totalJobCard.classList.add("hidden")
+//     createInterview()
+//    }
+//    else if(id == "rejected-filter-btn"){
+//     interviewField.classList.remove("hidden");
+//     totalJobCard.classList.add("hidden")
+//     createRejected();
+//    }
+
+
+
 
 //*** Main section ***/
 main.addEventListener('click',function(event){
@@ -115,7 +137,6 @@ main.addEventListener('click',function(event){
         if(currentStatus == "rejected-filter-btn")
          {
             createInterview();
-
          }
         totalCount()
         
