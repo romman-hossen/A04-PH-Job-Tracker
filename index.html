@@ -31,11 +31,8 @@
     </header>
      <hr class="w-9/12  mx-auto">
     <main class="w-9/12  mx-auto">
-        <!-- interview section -->
-        <section>
-
-        </section>
-        <!--  -->
+       
+        <!-- Toggling button section  -->
         <section class="my-6 space-y-5">
             <div class="flex justify-between">
                 <h3 class="text-xl font-bold">Available Jobs</h3>
@@ -47,6 +44,24 @@
                 <button id="rejected-filter-btn" onclick="toggleButton('rejected-filter-btn')" class="bg-base-100 px-4 py-2 rounded-sm cursor-pointer">Rejected</button>
             </div>
         </section>
+        <!-- no jobs section -->
+         <section id="no-job-section" class="hidden space-y-4 pb-15" >
+            <div class="flex justify-center items-center bg-base-100 p-6 rounded-xl shadow">
+                <div class="py-30">
+                    <div class="flex items-center justify-center">
+                        <img src="./asset/jobs.png" alt="">
+                    </div>
+                    <h3 class="text-2xl font-bold text-center">No jobs available</h3>
+                    <p class=" text-gray-400 text-center">Check back soon for new job opportunities</p>      
+                </div>
+            </div>
+        </section>
+
+         <!-- interview section -->
+        <section id="interview-field" class="hidden space-y-4 pb-15" >
+
+        </section>
+        <!-- all job cards section -->
         <section id="job-cards" class="space-y-4 pb-15">
             <div class="flex justify-between bg-base-100 p-6 rounded-xl shadow">
               <div class="space-y-5">
@@ -56,7 +71,7 @@
                 </div>
                 <p class="salary text-gray-400">Remote • Full-time • $130,000 - $175,000</p>
                 <div>
-                <button id="" class="btn-isApplied btn btn-soft mb-2">Not Applied</button>
+                <button id="" class="btn-isApplied btn btn-soft mb-2 hidden">Not Applied</button>
                 <p class="work">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                 </div>
                 <div class="flex gap-4">
@@ -213,6 +228,6 @@
 
     </main>
 
-    <script src="/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
