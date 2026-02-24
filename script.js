@@ -219,7 +219,7 @@ function createInterview() {
   for (let interview of interviewList) {
     console.log(interview);
     let div = document.createElement("div");
-    div.className = "flex justify-between bg-base-100 p-6 rounded-xl shadow";
+    div.className = "job-card-data flex flex-col md:flex-row items-center md:items-start justify-between bg-base-100 p-6 rounded-xl shadow";
     div.innerHTML = `
          <div class="space-y-5">
                 <div>
@@ -231,12 +231,12 @@ function createInterview() {
                 <button id="btn-isApplied" class="btn btn-soft btn-success mb-2">${interview.btnIsApplied}</button>
                 <p class="work">${interview.work}</p>
                 </div>
-                <div class="flex gap-4">
+                <div class="flex justify-around md:justify-start gap-4">
                     <button id="btn-interview" class="btn-interview btn btn-outline btn-success">interview</button>
                     <button id="btn-rejected" class="btn-rejected btn btn-outline btn-error">Rejected</button>
                 </div>  
             </div>
-            <div class="">
+            <div class="mt-7  md:mt-0">
                 <img id="btn-delete" src="./asset/delete.png" alt="">
             </div>
         `;
@@ -249,7 +249,7 @@ function createRejected() {
   for (let reject of rejectedList) {
     console.log("reject", reject);
     let div = document.createElement("div");
-    div.className = "flex justify-between bg-base-100 p-6 rounded-xl shadow";
+    div.className = "job-card-data flex flex-col md:flex-row items-center md:items-start justify-between bg-base-100 p-6 rounded-xl shadow";
     div.innerHTML = `
          <div class="space-y-5">
                 <div>
@@ -261,12 +261,12 @@ function createRejected() {
                 <button id="btn-isApplied" class="btn btn-soft btn-error mb-2">${reject.btnIsApplied}</button>
                 <p class="work">${reject.work}</p>
                 </div>
-                <div class="flex gap-4">
+                <div class="flex justify-around md:justify-start gap-4">
                     <button id="btn-interview" class="btn-interview btn btn-outline btn-success">interview</button>
                     <button id="btn-rejected" class="btn-rejected btn btn-outline btn-error">Rejected</button>
                 </div>  
             </div>
-            <div class="">
+            <div class="mt-7  md:mt-0">
                 <img id="btn-delete" src="./asset/delete.png" alt="">
             </div>
         `;
