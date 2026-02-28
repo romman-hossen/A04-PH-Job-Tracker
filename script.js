@@ -1,3 +1,4 @@
+
 let interviewList = [];
 let rejectedList = [];
 let currentStatus = "";
@@ -14,11 +15,11 @@ const totalJobCard = document.getElementById("job-cards");
 const deleteBtns = document.querySelectorAll(".btn-delete");
 
 deleteBtns.forEach(btn => {
-    btn.addEventListener("click", function (e){
-        let card = e.target.closest(".job-card-data")
+    btn.addEventListener("click", function (event){
+        let card = event.target.closest(".job-card-data");
         card.remove();
-         total.innerText = totalJobCard.children.length+ 1 - 1;
-         tabTotalJobTxt.innerText = totalJobCard.children.length+ 1 - 1;
+        total.innerText = totalJobCard.children.length+ 1 - 1;
+        tabTotalJobTxt.innerText = totalJobCard.children.length+ 1 - 1;
     })
 })
 
@@ -113,10 +114,11 @@ function toggleButton(id) {
     }
   }
 }
+totalCount();
 
 let interviewBtn = document.getElementById("btn-interview");
 
-console.log(interview);
+// console.log(interview);
 
 //    if(id == "all-filter-btn" ){
 //     totalJobCard.classList.remove("hidden");
@@ -133,15 +135,12 @@ console.log(interview);
 //     createRejected();
 //    }
 
-
-
-
-
 //*** Main section ***/
 main.addEventListener("click", function (event) {
   // console.log(event.target.parentNode.parentNode)
 
   if (event.target.classList.contains("btn-interview")) {
+    // tabTotalJobTxt.innerText = rejectedList.length-1;
     const parent = event.target.parentNode.parentNode;
 
     const company = parent.querySelector(".company").innerText;
@@ -153,26 +152,46 @@ main.addEventListener("click", function (event) {
       company,
       skill,
       salary,
-      btnIsApplied: "Applied",
+      btnIsApplied: "Interviewed",
       work,
     };
-    const companyExist = interviewList.find(
-      (item) => item.company == jobCard.company,
-    );
-    if (!companyExist) {
-      interviewList.push(jobCard);
-      parent.querySelector(".btn-isApplied").innerText = "Applied";
-      // console.log(interviewList)
-    }
+  
     rejectedList = rejectedList.filter(
       (item) => item.company != jobCard.company,
     );
     if (currentStatus == "rejected-filter-btn") {
       createInterview();
+       
+      if (rejectedList.length == 0) {
+      tabTotalJobTxt.innerText = 0;
+      noJob.classList.remove("hidden");
+      totalJobCard.classList.add("hidden");
+      interviewField.classList.add("hidden");
+    } else {
+      noJob.classList.add("hidden");
+      totalJobCard.classList.add("hidden");
+      interviewField.classList.remove("hidden");
+      tabTotalJobTxt.innerText = rejectedList.length +1 -1;
+      createRejected();
+    }
+    totalCount();
+    }
+      const companyExist = interviewList.find(
+      (item) => item.company == jobCard.company,
+    );
+    if (!companyExist) {
+      interviewList.push(jobCard);
+      parent.querySelector(".btn-isApplied").innerText = "Interviewed";
+      // console.log(interviewList)
+    }
+     if(currentStatus == "interview-filter-btn") {
+      tabTotalJobTxt.innerText = interviewList.length;
+    } else if(currentStatus == "rejected-filter-btn") {
+      tabTotalJobTxt.innerText = rejectedList.length;
     }
     totalCount();
   } else if (event.target.classList.contains("btn-rejected")) {
-    tabTotalJobTxt.innerText = interviewList.length-1;
+    // tabTotalJobTxt.innerText = interviewList.length-1;
     const parent = event.target.parentNode.parentNode;
 
     const company = parent.querySelector(".company").innerText;
@@ -184,7 +203,7 @@ main.addEventListener("click", function (event) {
       company,
       skill,
       salary,
-      btnIsApplied: "Not-Applied",
+      btnIsApplied: "Rejected",
       work,
     };
     interviewList = interviewList.filter(
@@ -193,6 +212,7 @@ main.addEventListener("click", function (event) {
     if (currentStatus == "interview-filter-btn") {
       createRejected();
       if (interviewList.length == 0) {
+        tabTotalJobTxt.innerText = 0;
         noJob.classList.remove("hidden");
         totalJobCard.classList.add("hidden");
         interviewField.classList.add("hidden");
@@ -200,14 +220,24 @@ main.addEventListener("click", function (event) {
         noJob.classList.add("hidden");
         totalJobCard.classList.add("hidden");
         interviewField.classList.remove("hidden");
+        tabTotalJobTxt.innerText = interviewList.length +1 -1;
         createInterview();
       }
+        totalCount();
     }
     const companyExist = rejectedList.find(
       (item) => item.company == jobCard.company );
     if (!companyExist) {
       rejectedList.push(jobCard);
+        parent.querySelector(".btn-isApplied").innerText = "Rejected";
       // console.log(interviewList)
+    }
+    if(currentStatus == "interview-filter-btn") {
+      tabTotalJobTxt.innerText = interviewList.length;
+      
+    } else if(currentStatus == "rejected-filter-btn") {
+      tabTotalJobTxt.innerText = rejectedList.length;
+      
     }
     totalCount();
   }
